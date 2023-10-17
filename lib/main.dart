@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:genshin_mod_manager/extension/pathops.dart';
-import 'package:genshin_mod_manager/provider/app_state.dart';
-import 'package:genshin_mod_manager/window/home.dart';
+import 'package:starrail_mod_manager/extension/pathops.dart';
+import 'package:starrail_mod_manager/provider/app_state.dart';
+import 'package:starrail_mod_manager/window/home.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:window_manager/window_manager.dart';
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FluentApp(
-      title: 'Genshin Mod Manager',
+      title: 'Starrail Mod Manager',
       home: FutureBuilder(
         future: getAppState().timeout(
           sharedPreferencesAwaitTime,

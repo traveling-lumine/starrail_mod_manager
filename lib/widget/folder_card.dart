@@ -2,11 +2,11 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:genshin_mod_manager/base/directory_watch_widget.dart';
-import 'package:genshin_mod_manager/extension/pathops.dart';
-import 'package:genshin_mod_manager/io/fsops.dart';
-import 'package:genshin_mod_manager/widget/editor_text.dart';
-import 'package:genshin_mod_manager/widget/folder_toggle.dart';
+import 'package:starrail_mod_manager/base/directory_watch_widget.dart';
+import 'package:starrail_mod_manager/extension/pathops.dart';
+import 'package:starrail_mod_manager/io/fsops.dart';
+import 'package:starrail_mod_manager/widget/editor_text.dart';
+import 'package:starrail_mod_manager/widget/folder_toggle.dart';
 import 'package:logger/logger.dart';
 import 'package:pasteboard/pasteboard.dart';
 

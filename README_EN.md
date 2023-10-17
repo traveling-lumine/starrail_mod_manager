@@ -1,6 +1,6 @@
 [한국어](README.md) | EN
 
-# genshin_mod_manager
+# starrail_mod_manager
 
 ## Program for Comfortable Mode Management
 
@@ -15,7 +15,7 @@
 
 ### How to Use
 
-1. Run `genshin_mod_manager.exe`.
+1. Run `starrail_mod_manager.exe`.
 2. In `Settings`, specify the paths for the migoto folder and the launcher. Both can be run from
    buttons labeled with their respective names at the bottom left.
 3. Create a major mod group folder for mods inside the Mods folder in the migoto folder. For

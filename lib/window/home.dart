@@ -1,13 +1,13 @@
 import 'dart:io';
 
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:genshin_mod_manager/base/directory_watch_widget.dart';
-import 'package:genshin_mod_manager/extension/pathops.dart';
-import 'package:genshin_mod_manager/io/fsops.dart';
-import 'package:genshin_mod_manager/provider/app_state.dart';
-import 'package:genshin_mod_manager/widget/folder_drop_target.dart';
-import 'package:genshin_mod_manager/window/page/folder.dart';
-import 'package:genshin_mod_manager/window/page/setting.dart';
+import 'package:starrail_mod_manager/base/directory_watch_widget.dart';
+import 'package:starrail_mod_manager/extension/pathops.dart';
+import 'package:starrail_mod_manager/io/fsops.dart';
+import 'package:starrail_mod_manager/provider/app_state.dart';
+import 'package:starrail_mod_manager/widget/folder_drop_target.dart';
+import 'package:starrail_mod_manager/window/page/folder.dart';
+import 'package:starrail_mod_manager/window/page/setting.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:window_manager/window_manager.dart';
@@ -60,7 +60,7 @@ class _HomeWindowState extends MDWState<HomeWindow> with WindowListener {
       title: DragToMoveArea(
         child: Align(
           alignment: Alignment.centerLeft,
-          child: Text('Genshin Mod Manager'),
+          child: Text('Starrail Mod Manager'),
         ),
       ),
     );

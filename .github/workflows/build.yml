@@ -13,11 +13,11 @@ jobs:
         with:
           channel: 'stable'
       - run: flutter build windows
-      - run: move build\windows\runner\Release GenshinModManager
-      - run: mkdir GenshinModManager\Resources
-      - run: tar -acf GenshinModManager.zip GenshinModManager
-      - run: certutil -hashfile .\GenshinModManager.zip SHA256
+      - run: move build\windows\runner\Release StarrailModManager
+      - run: mkdir StarrailModManager\Resources
+      - run: tar -acf StarrailModManager.zip StarrailModManager
+      - run: certutil -hashfile .\StarrailModManager.zip SHA256
       - uses: actions/upload-artifact@v2
         with:
           name: Release binary
-          path: GenshinModManager.zip
+          path: StarrailModManager.zip

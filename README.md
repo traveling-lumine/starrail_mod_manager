@@ -1,6 +1,6 @@
 한국어 | [EN](README_EN.md)
 
-# genshin_mod_manager
+# starrail_mod_manager
 
 ## 편한 모드 관리를 위한 프로그램
 
@@ -15,7 +15,7 @@
 
 ### 사용 방법
 
-1. `genshin_mod_manager.exe`를 실행합니다.
+1. `starrail_mod_manager.exe`를 실행합니다.
 2. `Settings`에서 migoto 폴더와 launcher 경로를 지정합니다. 이 둘은 왼쪽 아래 각각의 이름을 가진 버튼에서 실행이 가능합니다.
 3. migoto 폴더 내 Mods에 모드 대분류 폴더를 만듭니다. 예를 들면 캐릭터 이름으로 폴더명을 만듭니다.
 4. 대분류 폴더 내부에 모드 폴더를 넣습니다. 모드 폴더는 내부에 preview.png, preview.jpg, 또는 preview.jpeg 파일을 가질 수 있으며, 있을 시 이들

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:genshin_mod_manager/extension/pathops.dart';
+import 'package:starrail_mod_manager/extension/pathops.dart';
 import 'package:logger/logger.dart';
 
 abstract class DirectoryWatchWidget extends StatefulWidget {

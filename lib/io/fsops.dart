@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:genshin_mod_manager/extension/pathops.dart';
+import 'package:starrail_mod_manager/extension/pathops.dart';
 
 List<Directory> getFoldersUnder(Directory dir) {
   return dir.listSync().whereType<Directory>().toList(growable: false);

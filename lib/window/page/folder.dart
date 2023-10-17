@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:genshin_mod_manager/base/directory_watch_widget.dart';
-import 'package:genshin_mod_manager/extension/pathops.dart';
-import 'package:genshin_mod_manager/io/fsops.dart';
-import 'package:genshin_mod_manager/third_party/min_extent_delegate.dart';
-import 'package:genshin_mod_manager/widget/folder_card.dart';
-import 'package:genshin_mod_manager/widget/folder_drop_target.dart';
+import 'package:starrail_mod_manager/base/directory_watch_widget.dart';
+import 'package:starrail_mod_manager/extension/pathops.dart';
+import 'package:starrail_mod_manager/io/fsops.dart';
+import 'package:starrail_mod_manager/third_party/min_extent_delegate.dart';
+import 'package:starrail_mod_manager/widget/folder_card.dart';
+import 'package:starrail_mod_manager/widget/folder_drop_target.dart';
 
 class FolderPage extends DirectoryWatchWidget {
   FolderPage({
