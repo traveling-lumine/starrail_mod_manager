@@ -6,18 +6,29 @@ on:
 
 jobs:
   build:
+    permissions:
+      contents: write
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          architecture: x64
+      - run: flutter pub global activate cider
       - run: flutter build windows
-      - run: move build\windows\runner\Release StarrailModManager
-      - run: mkdir StarrailModManager\Resources
+      - run: move build\windows\x64\runner\Release StarrailModManager
       - run: tar -acf StarrailModManager.zip StarrailModManager
-      - run: certutil -hashfile .\StarrailModManager.zip SHA256
-      - uses: actions/upload-artifact@v2
+      - run: certutil -hashfile StarrailModManager.zip SHA256
+      - name: Get tag version
+        run: 'echo "TAG=v$(cider version)" >> $env:GITHUB_ENV'
+      - name: Create Tag
+        uses: ydataai/create-tag@v1
         with:
-          name: Release binary
-          path: StarrailModManager.zip
+          tag: ${{ env.TAG }}
+          message: ${{ env.TAG }}
+      - uses: softprops/action-gh-release@v1
+        with:
+          files: StarrailModManager.zip
+          tag_name: ${{ env.TAG }}
+          generate_release_notes: true

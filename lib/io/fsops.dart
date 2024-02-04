@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:starrail_mod_manager/extension/pathops.dart';
 
-List<Directory> getFoldersUnder(Directory dir) {
+List<Directory> getDirsUnder(Directory dir) {
   return dir.listSync().whereType<Directory>().toList(growable: false);
 }
 
@@ -12,25 +12,30 @@ List<File> getFilesUnder(Directory dir) {
 
 List<File> getActiveiniFiles(Directory dir) {
   return getFilesUnder(dir).where((element) {
-    final path = element.pathString;
+    final path = element.pathW;
     final extension = path.extension;
-    if (extension != const PathString('.ini')) return false;
+    if (extension != const PathW('.ini')) return false;
     final filename = path.basenameWithoutExtension;
     return filename.isEnabled;
   }).toList(growable: false);
 }
 
-File? findPreviewFile(Directory dir,
-    {PathString name = const PathString('preview')}) {
-  for (final element in getFilesUnder(dir)) {
-    final filename = element.basenameWithoutExtension;
+const _previewExtensions = [
+  PathW('.png'),
+  PathW('.jpg'),
+  PathW('.jpeg'),
+  PathW('.gif'),
+];
+
+File? findPreviewFile(Directory dir, {PathW name = const PathW('preview')}) =>
+    findPreviewFileIn(getFilesUnder(dir), name: name);
+
+File? findPreviewFileIn(List<File> dir, {PathW name = const PathW('preview')}) {
+  for (final element in dir) {
+    final filename = element.pathW.basenameWithoutExtension;
     if (filename != name) continue;
-    final ext = element.extension;
-    if (ext == const PathString('.png') ||
-        ext == const PathString('.jpg') ||
-        ext == const PathString('.jpeg')) {
-      return element;
-    }
+    final ext = element.pathW.extension;
+    if (_previewExtensions.contains(ext)) return element;
   }
   return null;
 }
@@ -38,7 +43,7 @@ File? findPreviewFile(Directory dir,
 void runProgram(File program) {
   Process.run(
     'start',
-    ['/b', '/d', program.parent.path, '', program.basename.asString],
+    ['/b', '/d', program.parent.path, '', program.pathW.basename.asString],
     runInShell: true,
   );
 }
