@@ -2,14 +2,11 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:archive/archive.dart';
+import 'package:collection/collection.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
-import 'package:http/http.dart' as http;
-import 'package:logger/logger.dart';
-import 'package:package_info_plus/package_info_plus.dart';
-import 'package:provider/provider.dart';
 import 'package:starrail_mod_manager/base/appbar.dart';
 import 'package:starrail_mod_manager/extension/pathops.dart';
 import 'package:starrail_mod_manager/io/fsops.dart';
@@ -21,6 +18,10 @@ import 'package:starrail_mod_manager/third_party/fluent_ui/red_filled_button.dar
 import 'package:starrail_mod_manager/widget/folder_drop_target.dart';
 import 'package:starrail_mod_manager/window/page/category.dart';
 import 'package:starrail_mod_manager/window/page/setting.dart';
+import 'package:http/http.dart' as http;
+import 'package:logger/logger.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -140,8 +141,8 @@ class _HomeWindowState<T extends StatefulWidget> extends State<HomeWindow> {
                     child: const Text('Start'),
                     onPressed: () async {
                       Navigator.of(context2).pop();
-                      final url = Uri.parse(
-                          '$baseLink/download/StarrailModManager.zip');
+                      final url =
+                          Uri.parse('$baseLink/download/StarrailModManager.zip');
                       final response = await http.get(url);
                       final archive =
                           ZipDecoder().decodeBytes(response.bodyBytes);
@@ -197,10 +198,15 @@ class _HomeWindowState<T extends StatefulWidget> extends State<HomeWindow> {
     final imageFiles =
         context.select<CategoryIconFolderObserverService, List<File>>(
             (value) => value.curFiles);
-    final List<_FolderPaneItem> subFolders = context
+    final sortedMenus = context
         .select<DirWatchService, List<String>>(
             (value) => value.curDirs.map((e) => e.path).toList(growable: false))
         .map((e) => PathW(e))
+        .toList(growable: false)
+      ..sort(
+        (a, b) => compareNatural(a.basename.asString, b.basename.asString),
+      );
+    final List<_FolderPaneItem> subFolders = sortedMenus
         .map((e) => _FolderPaneItem(
               dirPath: e,
               imageFile: findPreviewFileIn(imageFiles, name: e.basename),
